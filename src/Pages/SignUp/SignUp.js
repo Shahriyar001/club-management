@@ -1,27 +1,47 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser } = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('');
+    const navigate = useNavigate();
 
     const handleSignUp = (data) => {
-        console.log(data);
+        setSignUpError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // toast('User Created Successfully');
 
-                // saveUser(data.name, data.email);
+                toast('User Created Successfully');
+
+                saveUser(data.name, data.email);
             })
             .catch(error => {
                 console.log(error)
-                // setSignUpError(error.message)
+                setSignUpError(error.message)
             });
+    }
+
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate('/');
+            })
     }
 
     return (
@@ -54,7 +74,7 @@ const SignUp = () => {
 
                     </div>
                     <input className='btn btn-primary my-3 w-full' value="Sign Up" type="submit" />
-                    {/* {signUpError && <p className='text-red-600'>{signUpError}</p>} */}
+                    {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 <p>Already have an account ? <Link className='text-secondary' to="/login">Log in</Link></p>
                 <div className='divider'>OR</div>

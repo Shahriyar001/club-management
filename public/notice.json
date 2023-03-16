@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "date": "10 jan",
+        "message": "Today practice session will start at 4pm"
+    },
+    {
+        "id": "2",
+        "date": "8 jan",
+        "message": "New players report time is 7pm in confarence room"
+    },
+    {
+        "id": "3",
+        "date": "6 jan",
+        "message": "Players kit is mendatory, everyone should carry it"
+    },
+    {
+        "id": "4",
+        "date": "2 jan",
+        "message": "new 11 name will publish in 9pm, keep eyes on email"
+    }
+]

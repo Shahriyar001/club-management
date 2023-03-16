@@ -1,9 +1,12 @@
 import React from 'react';
+import Banner from './Banner/Banner';
+import SecondSec from './secondSec/SecondSec';
 
 const Dashboard = () => {
     return (
         <div>
-            <h2>Dashboard</h2>
+            <Banner></Banner>
+            <SecondSec></SecondSec>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import img2 from "../../../assets/images/football.jpg";
 
 const Banner = () => {
     return (
-        <div className="carousel w-full">
+        <div className="carousel max-h-screen">
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={img} alt='' className="w-full" />
                 <div className="absolute  transform -translate-y-1/2  top-3/4 mb-10 w-1/2 mx-auto ml-32">
